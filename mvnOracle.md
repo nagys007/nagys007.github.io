@@ -1,7 +1,7 @@
 # Using Oracle Maven Repository
 
 Do you need to include Oracle JDBC jars in your Maven project?
-It is not as simple as with other Maven repositories, because you need to set up authentication.
+It is not as simple as with other Maven repositories, because it requires you to set up authentication.
 If you have not done that before, it might be quite a challenge.
 This guide should help you get it done.
 So let's get started.
@@ -14,7 +14,7 @@ First of all, include the dependency in your pom.xml (adjust _artifactId_ and _v
 	<version>12.2.0.1</version>
 </dependency>
 ```
-Additionally, the Oracle maven repositories need to be added to your _pom.xml_
+Additionally, add the Oracle Maven repository to your _pom.xml_
 ```
 <repositories>
 	<repository>
@@ -36,13 +36,19 @@ Additionally, the Oracle maven repositories need to be added to your _pom.xml_
 	</pluginRepository>
 </pluginRepositories>
 ```
+If you try to build your Maven project now, you will get an error message _Not authorized, ReasonPhrase:Authorization Required_.
+```
+$ mvn clean package
+...
+[ERROR] Failed to execute goal on project oraclemvn: Could not resolve dependencies for project com.example:oraclemvn:jar:0.0.1-SNAPSHOT: Failed to collect dependencies at com.oracle.jdbc:ojdbc8:jar:12.2.0.1: Failed to read artifact descriptor for com.oracle.jdbc:ojdbc8:jar:12.2.0.1: Could not transfer artifact com.oracle.jdbc:ojdbc8:pom:12.2.0.1 from/to maven.oracle.com (https://maven.oracle.com): Not authorized , ReasonPhrase:Authorization Required. -> [Help 1]
+...
+```
 If you go to https://maven.oracle.com, you will see, that ...
 - Directory browsing is not allowed on the Oracle Maven Repository
 - Registration is required to access the Oracle Maven Repository. To register, please visit the [registration site](http://www.oracle.com/webapps/maven/register/license.html).
 - Technical information about how to use the Oracle Maven Repository is available [here](https://maven.oracle.com/doc.html).
 
-Following the technical information, you need to use a master password. 
-Encrypt it using
+Following the technical information, you need to use a master password for your Maven settings. This will protect your password for Oracle Maven repo. Encrypt your Maven master password using
 ```
 $ mvn --encrypt-master-password masterPassw0rd
 {3dH9rX5YDZgH9bArLT8icLidlqjwjcdcy0iGuXigBB8=}
@@ -56,7 +62,7 @@ $ cat $HOME/.m2/settings-security.xml
   </master>
 </settingsSecurity>
 ```
-Next, you need to encrypt your [Oracle Technology Network (OTN)](http://www.oracle.com/technetwork/index.html) password.
+Next, encrypt your [Oracle Technology Network (OTN)](http://www.oracle.com/technetwork/index.html) password.
 If you have no OTN account yet, you need to register [here](https://profile.oracle.com/myprofile/account/create-account.jspx).
 ```
 $ mvn --encrypt-password yourOTNpassw0rd
