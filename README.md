@@ -4,7 +4,8 @@
 
 ### Content
 
-[JAVA_HOME](JAVA_HOME.md)
+- [JAVA_HOME](JAVA_HOME.md)
+- [Oracle Maven repository](mvnOracle.md)
 
 ### Getting Started
 
