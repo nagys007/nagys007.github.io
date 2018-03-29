@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages
 
-[nagys007.github.io](https://nagys007.github.io)
+[slavong.github.io](https://slavong.github.io)
 
 ### Content
 
