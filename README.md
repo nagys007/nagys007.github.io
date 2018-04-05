@@ -6,6 +6,7 @@
 
 - [JAVA_HOME](JAVA_HOME.md)
 - [Oracle Maven repository](mvnOracle.md)
+- [AWS Bastion host](AWSBastionHost.md)
 
 ### Getting Started
 
